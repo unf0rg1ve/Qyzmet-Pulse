@@ -1,124 +1,133 @@
 # Qyzmet Pulse
 
-Qyzmet Pulse is a GovTech MVP for fast analysis and operational handling of citizen appeals. The product is designed for hackathon/demo scenarios where a government team needs to see not only a list of requests, but also priorities, risks, responsible departments, SLA status, public transparency, and management analytics.
+**Qyzmet Pulse** — информационно-аналитическая GovTech-система для автоматизации обработки обращений граждан. Она помогает государственным органам и акиматам не просто хранить обращения, а выявлять системные проблемы, определять приоритеты, контролировать сроки и принимать управленческие решения на основе данных.
 
-## What The Product Solves
+Проект разработан как MVP для трека «Государственные услуги» и может быть адаптирован под реальные источники данных: eOtinish, контакт-центры, мобильные приложения, электронную почту, CSV-файлы и внутренние информационные системы.
 
-Qyzmet Pulse helps government bodies and akimats turn fragmented citizen appeals into a structured operating workflow.
+## Что решает продукт
 
-The system solves these problems:
+Обращения граждан могут поступать по разным каналам, дублироваться, передаваться между подразделениями и теряться в большом потоке данных. Руководителю при этом сложно быстро увидеть, где возникает массовая проблема, какие обращения требуют срочной реакции и какое подразделение перегружено.
 
-- collects and simulates appeals from different channels, including manual input and CSV import;
-- groups similar appeals into problem clusters, so repeated issues are visible as one systemic problem;
-- calculates priority and risk level for each appeal;
-- routes appeals to responsible departments;
-- tracks status, SLA, overdue cases, and execution flow;
-- shows a Kanban-style operational board for employees;
-- provides district-level analytics and heatmap-style summaries;
-- gives managers a command center with forecasts, load, risks, and recommendations;
-- checks draft responses for weak formal replies through the Anti-Otpiska module;
-- shows a public anonymized citizen status card in Russian and Kazakh;
-- includes demo scenarios and a QA checklist for quick verification.
+Qyzmet Pulse объединяет обращения в единый рабочий процесс и предоставляет:
 
-The core idea is not to replace existing government platforms, but to act as an analytical and operational layer above appeal intake systems.
+- прием обращений через ручной ввод и импорт CSV;
+- автоматическое определение категории, приоритета и уровня риска;
+- объединение похожих обращений в проблемные кластеры;
+- назначение ответственного государственного органа или подразделения;
+- контроль статусов, сроков исполнения и нарушений SLA;
+- операционную Kanban-доску для сотрудников;
+- аналитику по районам, категориям и нагрузке подразделений;
+- командный центр с прогнозами, рисками и рекомендациями;
+- проверку качества ответа в модуле «Анти-отписка»;
+- публичную обезличенную карточку статуса обращения на русском и казахском языках;
+- журнал событий, сценарии демонстрации и встроенный чек-лист проверки.
 
-## How To Run
+Система не заменяет существующие государственные платформы. Она выступает как дополнительный аналитический и операционный слой, который может получать данные через API, очереди сообщений или пакетный импорт.
 
-Requirements:
+## Как запустить проект
 
-- Node.js 20+ recommended;
+### Требования
+
+- Node.js 20 или новее;
 - npm.
 
-Install dependencies:
+### Установка и запуск
+
+Клонируйте репозиторий и перейдите в папку проекта:
+
+```bash
+git clone https://github.com/unf0rg1ve/Qyzmet-Pulse.git
+cd Qyzmet-Pulse
+```
+
+Установите зависимости:
 
 ```bash
 npm install
 ```
 
-Start the development server:
+Запустите сервер разработки:
 
 ```bash
 npm run dev
 ```
 
-Open the app:
+После запуска откройте в браузере:
 
 ```text
 http://localhost:5173
 ```
 
-Create a production build:
+Для создания production-сборки выполните:
 
 ```bash
 npm run build
 ```
 
-Preview the production build:
+Для локального просмотра production-сборки:
 
 ```bash
 npm run preview
 ```
 
-## Technologies Used
+## Используемые технологии
 
-- React 19;
-- TypeScript;
-- Vite;
-- Lucide React icons;
-- CSS modules/style structure through `src/styles.css`;
-- mock domain services for scoring, analytics, reporting, and appeal processing.
+- **React 19** — пользовательский интерфейс;
+- **TypeScript** — типизация и доменная модель;
+- **Vite** — сборка и локальный сервер разработки;
+- **Lucide React** — набор интерфейсных иконок;
+- **CSS** — адаптивная верстка и визуальное оформление;
+- **Mock-сервисы** — имитация обработки обращений, расчета рисков, аналитики и формирования отчетов.
 
-Project structure:
-
-- `src/App.tsx` - main application shell and navigation;
-- `src/views/` - product screens;
-- `src/components/` - reusable UI components;
-- `src/data/` - demo data and constants;
-- `src/services/` - appeal, risk, and report logic;
-- `src/lib/` - API contract and security model;
-- `src/types/` - shared domain types;
-- `docs/` - architecture, test plan, and project structure notes.
-
-## How To Verify The Solution
-
-1. Install dependencies with `npm install`.
-2. Run `npm run build` and make sure the TypeScript and Vite build finishes successfully.
-3. Start the app with `npm run dev`.
-4. Open `http://localhost:5173`.
-5. Check the main dashboard: appeals, clusters, risk indicators, department load, and event log should be visible.
-6. Open the `Подключение` section and add a new appeal manually.
-7. Import or review demo appeals and confirm that new appeals appear in the operational flow.
-8. Open `Flow` and verify that appeals are grouped by work status.
-9. Open `Исполнитель` and check executor workflow, checklist, SLA, and notification blocks.
-10. Open `Штаб` and review forecasts, escalations, and management recommendations.
-11. Open `Data Hub` and verify source health and data quality indicators.
-12. Open `Регламенты` and check SLA/regulation matching.
-13. Open `Анти-отписка` and test response quality scoring.
-14. Open `Гражданин` and verify the public anonymized status card.
-15. Open `Тесты` and go through the prepared demo scenarios and QA checklist.
-
-## Demo Focus
-
-For a short hackathon presentation, the recommended flow is:
-
-1. Show the dashboard and explain the problem.
-2. Add or import a citizen appeal.
-3. Show automatic prioritization, clustering, and routing.
-4. Move the case through the Flow board.
-5. Show the manager view in `Штаб`.
-6. Show transparency through the `Гражданин` public card.
-7. Finish with `Анти-отписка`, proving that the system helps improve the quality of government responses.
-
-## Product Name
-
-Full name:
+### Структура проекта
 
 ```text
-Qyzmet Pulse: information and analytics system for citizen appeal management
+src/
+├── components/   переиспользуемые компоненты интерфейса
+├── data/         демонстрационные данные и константы
+├── lib/          API-контракт и модель безопасности
+├── services/     обработка обращений, рисков и отчетов
+├── types/        общие типы предметной области
+├── views/        функциональные экраны системы
+├── App.tsx       оболочка приложения и навигация
+└── styles.css    глобальные стили
+
+docs/             архитектура, план тестирования и описание структуры
 ```
 
-Short name:
+## Как проверить решение
 
-```text
-Qyzmet Pulse
-```
+1. Выполните `npm install`.
+2. Запустите `npm run build` и убедитесь, что TypeScript и Vite завершают сборку без ошибок.
+3. Запустите приложение командой `npm run dev`.
+4. Откройте `http://localhost:5173`.
+5. На главной панели проверьте показатели обращений, кластеры проблем, риски, нагрузку подразделений и журнал событий.
+6. В разделе «Подключение» создайте новое обращение вручную или импортируйте демонстрационные данные.
+7. Убедитесь, что система определила приоритет, риск и ответственное подразделение.
+8. В разделе «Flow» проверьте распределение обращений по этапам работы.
+9. В разделе «Исполнитель» откройте рабочее место сотрудника и проверьте SLA, чек-лист и уведомления.
+10. В разделе «Районы» изучите территориальную аналитику.
+11. В разделе «Штаб» проверьте прогноз нагрузки, эскалации и управленческие рекомендации.
+12. В разделе «Data Hub» проверьте состояние источников и качество данных.
+13. В разделе «Регламенты» проверьте сопоставление обращения с регламентом и сроком исполнения.
+14. В разделе «Анти-отписка» оцените качество подготовленного ответа гражданину.
+15. В разделе «Гражданин» проверьте публичную обезличенную карточку обращения.
+16. Откройте раздел «Тесты» и пройдите встроенные демонстрационные сценарии и QA-чек-лист.
+
+## Сценарий демонстрации
+
+Для короткой презентации проекта перед жюри:
+
+1. Покажите главную панель и обозначьте проблему разрозненных обращений.
+2. Добавьте новое обращение гражданина.
+3. Продемонстрируйте автоматическое определение риска, приоритета, кластера и исполнителя.
+4. Переместите обращение по рабочему процессу в разделе «Flow».
+5. Покажите руководителю общую ситуацию в разделе «Штаб».
+6. Откройте публичный статус в разделе «Гражданин».
+7. Завершите демонстрацию проверкой ответа через модуль «Анти-отписка».
+
+## Название проекта
+
+**Полное название:** Qyzmet Pulse — информационно-аналитическая система управления обращениями граждан.
+
+**Краткое название:** Qyzmet Pulse.
